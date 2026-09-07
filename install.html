@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Install Arorvansh Parivar App</title>
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="logo.png" type="image/png">
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f7e7b1;
+  text-align:center;
+  color:#3b2500;
+}
+
+.box{
+  max-width:420px;
+  margin:30px auto;
+  padding:25px 18px;
+}
+
+.logo{
+  width:150px;
+  height:150px;
+  border-radius:30px;
+}
+
+h1{
+  margin:18px 0 5px;
+  font-size:30px;
+}
+
+p{
+  font-size:18px;
+  line-height:1.5;
+}
+
+button{
+  width:100%;
+  padding:18px 10px;
+  margin-top:18px;
+  border:none;
+  border-radius:15px;
+  background:#0b5d2a;
+  color:white;
+  font-size:21px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.open{
+  background:#7b1e13;
+}
+
+.small{
+  font-size:14px;
+  margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<div style="display:flex; align-items:center; justify-content:center;
+gap:14px; max-width:430px; margin:0 auto 8px;">
+
+<img src="logo.png" alt="Arorvansh Parivar"
+style="width:82px; height:82px; object-fit:contain; margin:0;">
+
+<div style="text-align:left; line-height:1.2;">
+<div style="font-size:23px; font-weight:bold;">ARORVANSH PARIVAR</div>
+<div style="font-size:14px; margin-top:5px; white-space:nowrap;">
+Now on your mobile • Official Android App
+
+</div>
+</div>
+</div>
+<button class="open" onclick="window.location.href='https://app.arorvanshparivar.com'">
+OPEN ARORVANSH
+</button>
+<button id="installBtn">
+INSTALL ARORVANSH APP
+</button>
+
+
+
+</div>
+<a href="arorvansh-contact.vcf" download
+style="display:block; margin:14px auto; padding:14px; max-width:420px; text-align:center; background:#198754; color:white; font-size:18px; font-weight:bold; text-decoration:none; border-radius:12px;">
+📱 मोबाइल नंबर सेव करें – 9855455624
+</a>
+<a href="https://cdn.botpress.cloud/webchat/v3.6/shareable.html?configUrl=https%3A%2F%2Ffiles.bpcontent.cloud%2F2026%2F07%2F21%2F15%2F20260721152710-AHS32G43.json"
+target="_blank"
+style="display:block; margin:14px auto; padding:14px; max-width:420px; text-align:center; background:#1565c0; color:white; font-size:18px; font-weight:bold; text-decoration:none; border-radius:12px;">
+🤖 AI Sevak से जानकारी पूछें
+</a>
+<div style="max-width:420px; margin:10px auto; text-align:center;">
+
+<a href="https://www.arorvanshparivar.com/shukrana-13-parshadi"
+target="_blank"
+style="display:block; padding:9px; margin:7px 0;
+background:#7b1f1f; color:#ffd966; text-decoration:none;
+border:2px solid #d4af37; border-radius:11px; font-size:16px; font-weight:bold;">
+🪯 13 प्रसादी लंगर • हर संगरांद
+</a>
+
+<a href="https://www.arorvanshparivar.com/shri-arut-maharaj-ji"
+target="_blank"
+style="display:block; padding:9px; margin:7px 0;
+background:#8a5a00; color:white; text-decoration:none;
+border:2px solid #d4af37; border-radius:11px; font-size:16px; font-weight:bold;">
+🙏 श्री अरूट जी महाराज • जेठे रविवार • 11 से 2 बजे
+</a>
+
+<div style="font-size:13px; font-weight:bold; color:#6b3b16; margin-top:7px;">
+अधिक जानकारी के लिए AI Sevak के बटन पर क्लिक करें।
+</div>
+
+</div>
+<script>
+let deferredPrompt;
+
+const installBtn = document.getElementById("installBtn");
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+});
+
+installBtn.addEventListener("click", async () => {
+
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+
+    const result = await deferredPrompt.userChoice;
+
+    deferredPrompt = null;
+
+    if (result.outcome === "accepted") {
+      installBtn.innerText = "APP INSTALLED";
+    }
+
+  } else {
+    alert(
+      "यदि Install box नहीं खुला, इस लिंक को Chrome में खोलें और Chrome menu से Install app चुनें."
+    );
+  }
+});
+
+window.addEventListener("appinstalled", () => {
+  installBtn.innerText = "APP INSTALLED";
+});
+</script>
+
+</body>
+</html>
